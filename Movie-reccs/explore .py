@@ -1,11 +1,15 @@
-rating = []
-with open ('ml-100k/u.data') as f:
+ratings = []
+from pathlib import Path
+
+data_file = Path(__file__).parent / "ml-100k" / "u.data"
+
+with open(data_file) as f:
     for line in f:
         parts = line.strip().split('\t')
 
 user_id = int(parts[0])
 movie_id = int(parts[1])
-rating = int(parts[2])
+rating = float(parts[2])
 
 ratings.append((user_id, movie_id, rating))
 
