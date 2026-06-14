@@ -6,12 +6,13 @@ data_file = Path(__file__).parent / "ml-100k" / "u.data"
 with open(data_file) as f:
     for line in f:
         parts = line.strip().split('\t')
+        user_id = int(parts[0])
+        movie_id = int(parts[1])
+        rating = float(parts[2])
 
-user_id = int(parts[0])
-movie_id = int(parts[1])
-rating = float(parts[2])
+        ratings.append((user_id, movie_id, rating))
 
-ratings.append((user_id, movie_id, rating))
+
 
 print(f"Total ratings: {len(ratings)}")
 print(f"First 5 ratings: {ratings[:5]}")
